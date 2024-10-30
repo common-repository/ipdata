@@ -1,0 +1,10 @@
+{% extends 'layouts/' ~ field.layout ~ '.twig' %}
+
+{% block control %}
+
+    <textarea class="{{ field.class }}"
+              id="{{ prefix }}-{{ field.form }}-field-{{ field.id }}"
+              name="{{ prefix }}[{{ field.form }}][{{ field.id }}]"
+                {% if field.required %} required {% endif %}>{{ field.value }}</textarea>
+
+{% endblock %}

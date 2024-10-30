@@ -1,0 +1,10 @@
+{% extends 'layouts/' ~ field.layout ~ '.twig' %}
+
+{% block control %}
+
+    <input type="file"
+           id="{{ prefix }}-{{ field.form }}-field-{{ field.id }}"
+           name="{{ prefix }}[{{ field.form }}][{{ field.id }}]"
+            {% if field.required %} required {% endif %}>
+
+{% endblock %}

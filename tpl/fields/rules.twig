@@ -1,0 +1,59 @@
+<div class="ipdata-rules ipdata-add-remove">
+
+    <input type="hidden" name="ipdata[{{ field.form }}][{{ field.id }}]" value="">
+
+    {% for item in field.value %}
+
+        <div class="ipdata-rule-item ipdata-removable">
+
+            {% set id = loop.index0 %}
+
+            <div class="ipdata-country">
+
+                <select name="ipdata[{{ field.form }}][{{ field.id }}][{{ id }}][country]" class="ipdata-rule-select2" required>
+                    {% if item.country %}
+                        <option value="{{ item.country }}" selected>{{ field.countries[item.country] }}</option>
+                    {% endif %}
+                </select>
+
+            </div>
+
+            <div class="ipdata-url">
+
+                <input type="url" name="ipdata[{{ field.form }}][{{ field.id }}][{{ id }}][url]" class="adwpfw-form-control" value="{{ item.url }}" placeholder="URL to redirect" required>
+
+            </div>
+
+            <button class="button ipdata-remove" title="Remove Rule" type="button">-</button>
+
+        </div>
+
+    {% endfor %}
+
+    <button class="button ipdata-add" title="Add Rule" data-tpl="#ipdata-rule-tpl" type="button">Add Rule</button>
+
+</div>
+
+<script type="text/template" id="ipdata-rule-tpl">
+
+    <div class="ipdata-rule-item ipdata-removable">
+
+        <div class="ipdata-country">
+
+            <select name="ipdata[{{ field.form }}][{{ field.id }}][{{ '{{ id }}' }}][country]" class="ipdata-rule-select2" required>
+
+            </select>
+
+        </div>
+
+        <div class="ipdata-url">
+
+            <input type="url" name="ipdata[{{ field.form }}][{{ field.id }}][{{ '{{ id }}' }}][url]" class="adwpfw-form-control" value="{{ item.value }}" placeholder="URL to redirect" required>
+
+        </div>
+
+        <button class="button ipdata-remove" title="Remove Rule" type="button">-</button>
+
+    </div>
+
+</script>
